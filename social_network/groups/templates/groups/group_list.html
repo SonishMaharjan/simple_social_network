@@ -11,7 +11,7 @@
       </h2>
     {%endif%}
 
-    <h2>Groups</h2>
+    <h2>All Groups</h2>
     <p>Welcome to the groups page!</p>
 
 
@@ -30,6 +30,7 @@
 {%block group_content%}
   <div class="col-md-8">
     <div class="list-group">
+
       {%for group in object_list%}
 
         <a class="list-group-item" href="{%url 'groups:single' slug=group.slug %}">

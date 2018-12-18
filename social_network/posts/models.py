@@ -1,12 +1,9 @@
 from django.db import models
-
 from django.urls import reverse
 from django.conf import settings
-
 import misaka
 
 from groups.models import Group
-
 # Create your models here.
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -26,9 +23,12 @@ class Post(models.Model):
         self.message_html = misaka.html(self.message)
         super().save(*args,**kwargs)
 
+
     def get_absolute_url(self):
-        return reverse('posts:single',kwargs={'username':self.user.username,
-                'pk':self.pk})
+    #defines  where to go after creat in the post object
+        return reverse('posts:single',kwargs={'username':self.user.username,'pk':self.pk})
+
+
     class Meta:
         ordering= ['-created_at']
         unique_together = ['user','message']

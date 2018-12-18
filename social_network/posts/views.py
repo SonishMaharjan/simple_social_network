@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 
 from django.contrib import messages
 
+
 from django.http import Http404
 from django.views import generic
 
@@ -17,9 +18,13 @@ from . import models
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+
+
+
+
 class PostList(SelectRelatedMixin,generic.ListView):
     model = models.Post
-    #select all foreign key user grou in same queryset
+    #select all foreign key user group in same queryset
     select_related = ('user','group')
 
 class UserPosts(generic.ListView):
@@ -34,19 +39,19 @@ class UserPosts(generic.ListView):
         else:
             return self.post_user.posts.all()
 
-        def get_context_data(self,**kwargs):
-            context = super().get_context_data(**kwargs)
-            context['post_user'] = self.post_user
-            return context
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_user'] = self.post_user
+        return context
 
 class PostDetail(SelectRelatedMixin,generic.DetailView):
     model = models.Post
     select_related = ('user','group')
 
     def get_queryset(self):
-         #get_queryset is DetailView fxn
-         queryset = super().get_queryset()
-         return queryset.filter(user__username__iexact= self.kwargs.get('username'))
+        queryset = super().get_queryset()
+        return queryset.filter(user__username__iexact=self.kwargs.get("username"))
+
 
 
 class CreatePost(LoginRequiredMixin,SelectRelatedMixin,generic.CreateView):

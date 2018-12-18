@@ -2,9 +2,10 @@
 
 {%block pregroup%}
 
-<h1>{{group.name}}</h1>
 
-<h2>Member Count: {{group.members.count}}</h2>
+<h2>Group Name: {{group.name}}</h2>
+
+<h3>Member Count: {{group.members.count}}</h3>
 
 <div class="content">
   {%if  user in group.members.all%}

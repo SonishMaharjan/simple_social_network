@@ -18,16 +18,21 @@
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
    <link rel="stylesheet" href="{%static "social_network/css/master.css" %}">
+   <link rel="stylesheet" href="{%static "posts/posts.css" %}">
+
   </head>
   <body>
     <nav class="navbar mynav" role="navigation" id="navbar">
       <div class="container">
-        <a class="navbar-brand mynav" href="{%url 'home'%}">Star Social</a>
+        <a class="navbar-brand mynav" href="{%url 'home'%}">Connect Social</a>
 
         <ul class="nav navbar-nav navbar-right">
           {%if user.is_authenticated%}
             <li>
-              <a href="{%url 'posts:create'%}">Post</a>
+              <a href="{%url 'posts:all'%}">Posts</a>
+            </li>
+            <li>
+              <a href="{%url 'posts:create'%}">Add Post</a>
             </li>
             <li>
               <a href="{%url 'groups:all'%}">Groups</a>

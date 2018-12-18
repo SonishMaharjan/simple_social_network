@@ -1,19 +1,24 @@
 {%extends "posts/post_base.html"%}
 
-{%block pre_post_content%}
+{%block pre_post%}
+
   <div class="col-md-4">
 
+
     {%if request.user.is_authenticated%}
+
     <div class="card card-with-shadow">
       <div class="content">
         <h5 class="title">Your Groups</h5>
         <ul class="list-unstyled">
           <!-- groups/models.py line 41 and register = template.Library() -->
-          {%for memeber_group in get_user_groups%}
+          
+          {{get_user_groups}}
+          {%for member_group in get_user_groups%}
             <li class="group li-with-bullet">
               <a href="{%url 'groups:single' slug=member_group.group.slug %}">
 
-
+                {{member_group.group.name}}
               </a>
             </li>
           {%endfor%}
@@ -27,6 +32,7 @@
       <div class="content">
         <h5 class="title">All Groups</h5>
         <ul class="list-unstyled">
+          {{get_other_groups}}
           {%for other_group in get_other_groups%}
             <li class="group li-with-bullet">
               <a href="{%url 'groups:single' slug=other_group.slug%}">
@@ -43,6 +49,9 @@
 
 
   </div>
+
+
+
 
 {%endblock%}
 

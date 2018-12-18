@@ -9,6 +9,7 @@ from django.views import  generic
 
 from django.contrib import messages
 
+from . import models
 
 from django.shortcuts import get_object_or_404
 
@@ -16,7 +17,7 @@ from django.shortcuts import get_object_or_404
 from groups.models import Group,GroupMember
 
 class CreateGroup(LoginRequiredMixin,generic.CreateView):
-    fields = {'name','description'}
+    fields = {'description','name'}
     model = Group
 
 class SingleGroup(generic.DetailView):

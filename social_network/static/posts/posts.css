@@ -1,0 +1,12 @@
+.poster{
+  border: 1px solid grey;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 5px;
+
+}
+
+.poster h3
+{
+  padding:0px 10px;
+}
