@@ -14,6 +14,7 @@
     <time class="time">
       <h5>Created on:</h5>
       <a href="{%url 'posts:single' username=post.user.username pk=post.pk%}">{{post.created_at|timesince}}
+        ago
       </a>
     </time>
 
