@@ -2,28 +2,31 @@
 
 {%block pregroup%}
 
+<div class="col-md-4">
 
-<h2>Group Name: {{group.name}}</h2>
+  <h2>Group Name: {{group.name}}</h2>
 
-<h3>Member Count: {{group.members.count}}</h3>
+  <h3>Member Count: {{group.members.count}}</h3>
 
-<div class="content">
-  {%if  user in group.members.all%}
-    <a href="{%url "groups:leave" slug=group.slug %}"
-    class="btn btn-lg btn-fill btn-warning">
-      <span class="glyphicon glyphicon-remove-circle"></span>
-        Leave
-    </a>
-  {%else%}
-    <a href="{%url "groups:join" slug=group.slug %}"
-    class="btn btn-lg btn-fill btn-default">
-      <span class="glyphicon glyphicon-ok-circle"></span>
-        Join
-    </a>
-  {%endif%}
+  <div class="content">
+    {%if  user in group.members.all%}
+      <a href="{%url 'groups:leave' slug=group.slug %}" class="btn btn-lg btn-fill btn-warning">
+        <span class="glyphicon glyphicon-remove-circle"></span>
+          Leave
+      </a>
+    {%else%}
+      <a href="{%url 'groups:join' slug=group.slug %}"class="btn btn-lg btn-fill btn-default">
+        <span class="glyphicon glyphicon-ok-circle"></span>
+          Join
+      </a>
+    {%endif%}
+
+  </div>
+
+
+
 
 </div>
-
 
 {%endblock%}
 
@@ -31,16 +34,17 @@
 {%block group_content%}
 
 
-<div class="col-md-8">
-    {%if group.posts.count == 0%}
-      <h2>No posts in this group yet.</h2>
-    {%else%}
-      {%for post in group.posts.all%}
-        {%include "posts/_post.html"%}
-      {%endfor%}
-    {%endif%}
+  <div class="col-md-8">
+      {%if group.posts.count == 0%}
+        <h2>No posts in this group yet.</h2>
+      {%else%}
+        {%for post in group.posts.all%}
+          {%include "posts/_post.html"%}
+        {%endfor%}
+      {%endif%}
+
+  </div>
 
 </div>
-
 
 {%endblock%}
