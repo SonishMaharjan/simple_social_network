@@ -29,9 +29,9 @@ class Group(models.Model):
         self.description_html = misaka.html(self.description)
         super().save(*args, **kwargs)
 
+    # redirect when new object is created
     def get_absolute_url(self):
         return reverse("groups:single", kwargs={"slug": self.slug})
-
 
     class Meta:
         ordering = ["name"]
