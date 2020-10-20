@@ -29,8 +29,10 @@ class ListGroups(generic.ListView):
 
 class JoinGroup(LoginRequiredMixin,generic.RedirectView):
     def get_redirect_url(self,*args,**kwargs):
+        print(self.kwargs.get('slug'))
         return reverse("groups:single",kwargs={'slug':self.kwargs.get('slug')})
 
+    # get is http method(so this furnction is called when get request is sent)
     def get(self,request,*args,**kwargs):
         group = get_object_or_404(Group,slug=self.kwargs.get('slug'))
         try:
@@ -49,8 +51,8 @@ class LeaveGroup(LoginRequiredMixin,generic.RedirectView):
 
     def get(self,request,*args,**kwargs):
         try:
-            membership = models.GroupMember.objects.filter(user= self.request.user, group__slug=self.kwargs.get('slug')).get()
-        except models.GroupMemeber.DoesNotExist:
+            membership = GroupMember.objects.filter(user= self.request.user, group__slug=self.kwargs.get('slug')).get()
+        except GroupMemeber.DoesNotExist:
             messages.warning(self.request,"Sorry you are'nt in this group!")
         else:
             membership.delete()
