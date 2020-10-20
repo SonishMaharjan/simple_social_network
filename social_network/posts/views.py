@@ -19,9 +19,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-
-
-
 class PostList(SelectRelatedMixin,generic.ListView):
     model = models.Post
     #select all foreign key user group in same queryset
@@ -49,6 +46,7 @@ class PostDetail(SelectRelatedMixin,generic.DetailView):
     select_related = ('user','group')
 
     def get_queryset(self):
+        queryset = super().get_queryset()
         queryset = super().get_queryset()
         return queryset.filter(user__username__iexact=self.kwargs.get("username"))
 

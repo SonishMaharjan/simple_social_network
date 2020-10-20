@@ -12,7 +12,6 @@
         <h5 class="title">Your Groups</h5>
         <ul class="list-unstyled">
           <!-- groups/models.py line 41 and register = template.Library() -->
-
           {{get_user_groups}}
           {%for member_group in get_user_groups%}
             <li class="group li-with-bullet">
