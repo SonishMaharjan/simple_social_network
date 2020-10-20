@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'posts',
     'groups',
     'bootstrap3',
-
+    'channels',
+    'chat'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'social_network.wsgi.application'
+ASGI_APPLICATION = "social_network.routing.application"
 
 
 # Database
