@@ -26,6 +26,7 @@ Project is created with:
 
 ## Setup
 To run this project, clone/download the project. Go to project folder and run
-
+```
 $ pipenv install
 $ python manage.py runserver
+```
