@@ -8,10 +8,10 @@ A simple social network app implemented using Django and Django Channels for cha
 * [Setup](#setup)
 
 ## General Info
-General Info
 A social network app, where users can create groups and post status and share with others group members. Other features include chat rooms, where multiple users can chat in real time.
 
-![App Image](https://github.com/SonishMaharjan/simple_social_network/blob/master/readme/social_network.jpg?raw=true)
+![social_network app image](https://user-images.githubusercontent.com/25360149/100054882-0f5b5200-2e4b-11eb-8f43-14e04bdd7ea4.jpg)
+
 
 ## Features
 * User can create groups and join groups.
